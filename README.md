@@ -11,6 +11,7 @@ Installation
 
 Examples
 --------
+    require 'rubygems'
     require 'tasklist'
 
     during '2010 September' do 
