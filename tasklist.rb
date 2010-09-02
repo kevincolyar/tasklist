@@ -2,22 +2,38 @@ require 'date'
 
 class TaskList
   @dates = []
+  @groups = {}
   
   class << self
-    attr_accessor :dates
+    attr_accessor :date, :groups
   end
+
+  def self.output
+    @groups.keys.each do |key|
+      puts key
+      puts '-' * 100
+      @groups[key].each do |task|
+        puts " - #{task}"
+      end
+    end
+  end
+
 end
 
 module Kernel
   def on(date, &block)
-    TaskList.dates << Date.parse(date)
+    TaskList.date = Date.parse(date)
     block.call
-    TaskList.dates.pop
   end
 
   def task(*args)
-    task = Task.new(TaskList.dates.last, args[0], args[1], args[2], args[3..-1] || [])
-    puts task
+    task = Task.new(TaskList.date, args[0], args[1], args[2], args[3..-1] || [])
+    TaskList.groups[TaskList.date] ||= []
+    TaskList.groups[TaskList.date] << task
+  end
+
+  def report
+    TaskList.output
   end
 
 end
@@ -34,6 +50,6 @@ class Task
   end
 
   def to_s
-    "#{@date} #{@name} #{@start_time} #{@end_time} #{@tags.join(',')}"
+    "\"#{@name}\" #{@start_time} - #{@end_time} #{@tags.join(',')}"
   end
 end
