@@ -36,6 +36,9 @@ Output
     2010-09-03:
      - "Take out garbage"  -  
      - "Wash car"  -  
+
+More formatters coming soon...
+
 Tips
 ---
 It is very useful if you have macros setup for dates and times
