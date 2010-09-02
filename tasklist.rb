@@ -9,8 +9,7 @@ class TaskList
 
   def self.output
     @groups.keys.each do |key|
-      puts key
-      puts '-' * 80
+      puts "#{key}:"
       @groups[key].each do |task|
         puts " - #{task}"
       end
@@ -20,6 +19,13 @@ class TaskList
 end
 
 module Kernel
+  def during(period, &block)
+    block.call
+    puts period
+    puts '-' * 80
+    TaskList.output
+  end
+
   def on(date, &block)
     TaskList.date = Date.parse(date)
     block.call
@@ -29,10 +35,6 @@ module Kernel
     task = Task.new(TaskList.date, args[0], args[1], args[2], args[3..-1] || [])
     TaskList.groups[TaskList.date] ||= []
     TaskList.groups[TaskList.date] << task
-  end
-
-  def report
-    TaskList.output
   end
 
 end

@@ -10,19 +10,28 @@ Examples
 --------
     require 'tasklist'
 
-    on '2010-09-02' do 
-      task 'Create tasklist DSL', '09:15:56', '', 'admin', 'done'
-      task 'Push tasklist to github', '09:34:00', '09:38:04', 'github'
-    end
+    during '2010 September' do 
+      on '2010-09-03' do 
+        task 'Take out garbage'
+        task 'Wash car'
+      end
 
-    report
+      on '2010-09-02' do 
+        task 'Create tasklist DSL', '09:15:56', '', 'admin', 'done'
+        task 'Push tasklist to github', '09:34:00', '09:38:04', 'github'
+      end
+    end
 
 Output
 ------
-    2010-09-02
-    ----------------------------------------------------------------------------------------------------
+    2010 September
+    --------------------------------------------------------------------------------
+    2010-09-02:
      - "Create tasklist DSL" 09:15:56 -  admin,done
      - "Push tasklist to github" 09:34:00 - 09:38:04 github
+    2010-09-03:
+     - "Take out garbage"  -  
+     - "Wash car"  -  
 Tips
 ---
 It is very useful if you have macros setup for dates and times
