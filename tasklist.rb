@@ -10,7 +10,7 @@ class TaskList
   def self.output
     @groups.keys.each do |key|
       puts key
-      puts '-' * 100
+      puts '-' * 80
       @groups[key].each do |task|
         puts " - #{task}"
       end
