@@ -1,7 +1,6 @@
 require 'date'
 
 class TaskList
-  @dates = []
   @groups = {}
   
   class << self
