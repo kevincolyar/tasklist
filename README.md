@@ -5,6 +5,9 @@ Description
 -----------
 Tasklist is a ruby DSL for creating tasklists
 
+Installation
+------------
+    $ sudo gem install tasklist
 
 Examples
 --------
