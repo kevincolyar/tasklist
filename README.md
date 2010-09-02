@@ -15,7 +15,7 @@ Examples
 
 Tips
 ---
-It is very rseful if you have macros setup for dates and times
+It is very useful if you have macros setup for dates and times
 
 ~/.vimrc
     iabbrev <buffer> ddate <C-R>=strftime("%Y-%m-%d")<CR>
